@@ -4,6 +4,6 @@ require('dotenv').config();
 const app = require('./src/server.js');
 const { db } = require('./src/auth/models');
 
-db.sync().then(() => {
-  app.start(process.env.PORT || 3001);
-});
+db.sync()
+  .then(() => app.start(process.env.PORT || 3001))
+  .catch((e) => console.log(e));
