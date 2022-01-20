@@ -9,6 +9,7 @@ const morgan = require('morgan');
 const errorHandler = require('./error-handlers/500.js');
 const notFound = require('./error-handlers/404.js');
 const authRoutes = require('./auth/router/routes.js');
+const v1Routes = require('./auth/router/v1.js');
 const v2Routes = require('./auth/router/v2.js');
 
 // Prepare the express app
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use(authRoutes);
+app.use('/api/v1', v1Routes);
 app.use('/api/v2', v2Routes);
 
 // Catchalls
