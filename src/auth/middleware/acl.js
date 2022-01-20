@@ -10,12 +10,14 @@ module.exports = (capability) => {
         next();
       }
       else {
-        next('Access Denied');
+        _authError();
       }
     } catch (e) {
       next('Invalid Login');
     }
 
+    function _authError() {
+      res.status(403).send('Forbidden');
+    }
   };
-
 };
